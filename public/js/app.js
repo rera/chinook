@@ -2013,23 +2013,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      beer: {}
+      name: '',
+      brewery: ''
     };
   },
-  created: function created() {
-    var _this = this;
-
-    window.axios.get("/api/beers/edit/".concat(id)).then(function (response) {
-      _this.beer = response.data;
-    });
-  },
   methods: {
-    update: function update(id, name, brewery) {
-      window.axios.put("/api/beers/".concat(id), {
-        name: name,
-        brewery: brewery
-      }).then(function () {
-        flash('Beer record updated.', 'success');
+    create: function create() {
+      var _this = this;
+
+      window.axios.post("/api/beers", this.$data).then(function (_ref) {
+        var data = _ref.data;
+
+        _this.$router.push('/');
       });
     }
   }
@@ -38305,7 +38300,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.update($event)
+            return _vm.create($event)
           }
         }
       },
@@ -38320,19 +38315,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.beer.name,
-                    expression: "beer.name"
+                    value: _vm.name,
+                    expression: "name"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.beer.name },
+                domProps: { value: _vm.name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.beer, "name", $event.target.value)
+                    _vm.name = $event.target.value
                   }
                 }
               })
@@ -38350,19 +38345,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.beer.brewery,
-                    expression: "beer.brewery"
+                    value: _vm.brewery,
+                    expression: "brewery"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.beer.brewery },
+                domProps: { value: _vm.brewery },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.beer, "brewery", $event.target.value)
+                    _vm.brewery = $event.target.value
                   }
                 }
               })
@@ -38382,7 +38377,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Save Changes")])
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _vm._v("Save New Beer")
+      ])
     ])
   }
 ]

@@ -9,9 +9,9 @@ use Faker\Generator;
 
 class BeersController extends Controller
 {
-	public function create(Request $request)
+	public function store(Request $request)
 	{
-			$beer = new beer();
+			$beer = new Beer();
 			$beer->name = $request->name;
 			$beer->brewery = $request->brewery;
 		  $beer->save();
