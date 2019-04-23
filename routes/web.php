@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $beers = \App\Beer::all();
+    return view('welcome', ['beers' => $beers]);
 });
 
 Route::get('/status', function () {
