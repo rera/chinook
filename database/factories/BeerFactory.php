@@ -6,11 +6,16 @@ use App\Beer;
 use Faker\Generator as Faker;
 
 $factory->define(Beer::class, function (Faker $faker) {
-    $styles = [ 'IPA', 'Pilsner', 'Lager', 'Kolsch', 'Ale', 'Red', 'Stout', 'Brown'];
+    $dummy = [
+      'styles' => [ 'IPA', 'Pilsner', 'Lager', 'Kolsch', 'Ale', 'Red', 'Stout', 'Brown Ale', 'New England IP'],
+      'breweries' => [ 'Funky Buddha Brewery', 'Islamorada Brewing', 'Florida Keys Brewing Co.', 'Kauai Beer Co.', 'Tequesta Brewing Company', 'Twisted Trunk Brewing', 'MIA Brewing', 'Terrapin Beer Co.' ]
+    ];
 
     return [
-      'name' => substr($faker->sentence(2), 0, -1),
-      'brewery' => substr($faker->sentence(2), 0, -1),
-      'style' => $styles[ array_rand($styles) ]
+      'name' => implode([
+        substr($faker->sentence(1), 0, -1),
+        $dummy['styles'][ array_rand($dummy['styles']) ]
+      ], " "),
+      'brewery' => $dummy['breweries'][ array_rand($dummy['breweries']) ]
     ];
 });

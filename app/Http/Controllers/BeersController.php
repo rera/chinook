@@ -14,7 +14,6 @@ class BeersController extends Controller
 			$beer = new beer();
 			$beer->name = $request->name;
 			$beer->brewery = $request->brewery;
-			$beer->style = $request->style;
 		  $beer->save();
 
 		  return response($beer->jsonSerialize(), Response::HTTP_CREATED);
@@ -30,10 +29,15 @@ class BeersController extends Controller
 	  $beer = Beer::findOrFail($id);
 		$beer->name = $request->name;
 		$beer->brewery = $request->brewery;
-		$beer->style = $request->style;
 	  $beer->save();
 
 	  return response(null, Response::HTTP_OK);
+	}
+
+	public function edit(Request $request, $id)
+	{
+	  $beer = Beer::findOrFail($id);
+	  return response($beer, Response::HTTP_OK);
 	}
 
 	public function destroy($id)

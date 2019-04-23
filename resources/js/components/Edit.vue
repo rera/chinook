@@ -18,7 +18,7 @@
           </div>
         </div><br />
         <div class="form-group">
-          <button class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-primary">Save &amp; Return to List</button>
         </div>
     </form>
   </div>
@@ -32,14 +32,14 @@
         }
       },
       created() {
-        window.axios.get(`/api/beers/edit/${id}`).then((response) => {
+        window.axios.get(`/api/beers/${this.$route.params.id}/edit`).then((response) => {
             this.beer = response.data;
         });
       },
       methods: {
-        update(id, name, brewery) {
-					window.axios.put(`/api/beers/${id}`, { name, brewery }).then(() => {
-						flash('Beer record updated.', 'success');
+        update() {
+					window.axios.put(`/api/beers/${this.$route.params.id}`, this.beer).then(() => {
+						this.$router.push('/');
 					});
         }
       }

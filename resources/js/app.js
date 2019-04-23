@@ -15,9 +15,7 @@ window.flash = function(message) {
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
-
-Vue.component('flash', require('./components/Flash.vue'));
+Vue.use(VueRouter);
 
 import App from './components/App'
 import List from './components/List'
@@ -38,7 +36,7 @@ const router = new VueRouter({
             component: New,
         },
         {
-            path: '/edit',
+            path: '/beer/:id',
             name: 'edit',
             component: Edit,
         },
