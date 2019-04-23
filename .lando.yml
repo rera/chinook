@@ -3,6 +3,9 @@ recipe: laravel
 config:
   webroot: public
   database: postgres
+  build:
+    - yarn install
+  command: yarn dev
 services:
   node:
     type: node
@@ -12,4 +15,6 @@ tooling:
   npm:
     service: node
   node:
+    service: node
+  yarn:
     service: node

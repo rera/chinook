@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::get('/status', function () {
     return response("Success", 200)
       ->header('Content-Type', 'text/plain');
 });
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');
