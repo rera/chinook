@@ -3,3 +3,13 @@ recipe: laravel
 config:
   webroot: public
   database: postgres
+services:
+  node:
+    type: node
+    build:
+      - npm install
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
