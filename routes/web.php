@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/status', function () {
+    return response("Success", 200)
+      ->header('Content-Type', 'text/plain');
+});
