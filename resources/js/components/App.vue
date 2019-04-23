@@ -1,14 +1,13 @@
 <template>
-  <div id="app" class="container">
-    <div class="heading row justify-content-center">
-      <h1>Chinook</h1>
-    </div>
-    <beer-component
-      v-for="beer in beers"
-      v-bind="beer"
-      :key="beer.id"
-    ></beer-component>
-  </div>
+  <div id="app">
+		<div class="card-columns">
+	    <beer-component
+	      v-for="beer in beers"
+	      v-bind="beer"
+	      :key="beer.id"
+	    ></beer-component>
+	  </div>
+	</div>
 </template>
 
 <style lang="scss">
@@ -34,18 +33,20 @@
     methods: {
       fetch() {
         window.axios.get('/api/beers').then(({ data }) => {
-					console.log(data);
 					data.forEach(beer => {
 						this.beers.push(new Beer(beer));
 					})
 				});
+      },
+      delete(id) {
+        // @TODO
       }
+    },
+    components: {
+      BeerComponent
     },
 		created() {
 		  this.fetch();
-		},
-    components: {
-      BeerComponent
-    }
+		}
   }
 </script>

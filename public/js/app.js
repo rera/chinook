@@ -1780,7 +1780,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 function Beer(_ref) {
   var id = _ref.id,
       name = _ref.name,
@@ -1805,18 +1804,19 @@ function Beer(_ref) {
 
       window.axios.get('/api/beers').then(function (_ref2) {
         var data = _ref2.data;
-        console.log(data);
         data.forEach(function (beer) {
           _this.beers.push(new Beer(beer));
         });
       });
+    },
+    "delete": function _delete(id) {// @TODO
     }
-  },
-  created: function created() {
-    this.fetch();
   },
   components: {
     BeerComponent: _Beer_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  created: function created() {
+    this.fetch();
   }
 });
 
@@ -1831,6 +1831,8 @@ function Beer(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -37784,32 +37786,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container", attrs: { id: "app" } },
-    [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c("div", { attrs: { id: "app" } }, [
+    _c(
+      "div",
+      { staticClass: "card-columns" },
       _vm._l(_vm.beers, function(beer) {
         return _c(
           "beer-component",
           _vm._b({ key: beer.id }, "beer-component", beer, false)
         )
-      })
-    ],
-    2
-  )
+      }),
+      1
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "heading row justify-content-center" }, [
-      _c("h1", [_vm._v("Chinook")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37831,25 +37822,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "beer row justify-content-center" }, [
-    _c("div", { staticClass: "col-md-8" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.name))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.type) +
-              " by " +
-              _vm._s(_vm.brewery) +
-              "\n            "
-          )
-        ])
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("h5", { staticClass: "card-title" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(_vm.name))])
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+        _vm._v(_vm._s(_vm.brewery))
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close pull-right",
+        attrs: { type: "button", "aria-label": "Delete" }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
 render._withStripped = true
 
 

@@ -8,7 +8,10 @@
     <title>Chinook</title>
 </head>
 <body>
-     @yield('content')
-		 <script src="{{ asset('js/app.js') }}" defer></script>
+    @include('nav')
+    <main role="main" class="container">
+        @yield('content')
+    </main>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

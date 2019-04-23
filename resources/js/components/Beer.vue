@@ -1,14 +1,16 @@
 <template>
-    <div class="beer row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ name }}</div>
-                <div class="card-body">
-                    {{ type }} by {{ brewery }}
-                </div>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="close pull-right" aria-label="Delete">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h5 class="card-title">
+        <a href="#">{{ name }}</a>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ brewery }}</h6>
+      <!-- <p class="card-text">{{ brewery }}</p> -->
     </div>
+  </div>
 </template>
 
 <script>
