@@ -11,7 +11,7 @@ body {
   padding-top: 5rem;
 
   #app {
-    padding: 1.5rem;
+    padding: .5rem;
 
     .card-columns {
       @include media-breakpoint-only(sm) {
@@ -23,6 +23,21 @@ body {
       @include media-breakpoint-only(lg) {
         column-count: 3;
       }
+
+      .card-title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .stars {
+        margin-left: 10px;
+      }
+    }
+
+    .vdp-datepicker input[type='text'] {
+      border: 0;
+      color: #495057;
     }
 
   }

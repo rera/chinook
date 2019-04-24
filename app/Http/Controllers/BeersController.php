@@ -9,19 +9,23 @@ use Faker\Generator;
 
 class BeersController extends Controller
 {
+	public function index()
+	{
+		return response(Beer::orderBy('sampled', 'desc')->get(), Response::HTTP_OK);
+	}
+
 	public function store(Request $request)
 	{
 			$beer = new Beer();
 			$beer->name = $request->name;
 			$beer->brewery = $request->brewery;
+			$beer->sampled = $request->sampled;
+			$beer->abv = $request->abv;
+			$beer->rating = $request->rating;
+			$beer->notes = $request->notes;
 		  $beer->save();
 
 		  return response($beer->jsonSerialize(), Response::HTTP_CREATED);
-	}
-
-	public function index()
-	{
-	  return response(Beer::all()->jsonSerialize(), Response::HTTP_OK);
 	}
 
 	public function update(Request $request, $id)
@@ -29,6 +33,10 @@ class BeersController extends Controller
 	  $beer = Beer::findOrFail($id);
 		$beer->name = $request->name;
 		$beer->brewery = $request->brewery;
+		$beer->sampled = $request->sampled;
+		$beer->abv = $request->abv;
+		$beer->rating = $request->rating;
+		$beer->notes = $request->notes;
 	  $beer->save();
 
 	  return response(null, Response::HTTP_OK);

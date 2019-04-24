@@ -10,11 +10,14 @@
 </template>
 
 <script>
-  function Beer({ id, name, brewery, style}) {
+  function Beer({ id, name, brewery, sampled, abv, rating, notes }) {
     this.id = id;
     this.name = name;
-		this.brewery = brewery;
-		this.type = style;
+    this.brewery = brewery;
+    this.sampled = sampled;
+    this.abv = abv;
+    this.rating = rating;
+    this.notes = notes;
   }
 
   import BeerComponent from './Beer.vue';

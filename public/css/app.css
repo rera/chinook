@@ -10667,7 +10667,7 @@ body {
 }
 
 body #app {
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -10692,5 +10692,20 @@ body #app {
        -moz-column-count: 3;
             column-count: 3;
   }
+}
+
+body #app .card-columns .card-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+body #app .card-columns .stars {
+  margin-left: 10px;
+}
+
+body #app .vdp-datepicker input[type=text] {
+  border: 0;
+  color: #495057;
 }
 

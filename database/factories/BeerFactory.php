@@ -16,6 +16,10 @@ $factory->define(Beer::class, function (Faker $faker) {
         substr($faker->sentence(1), 0, -1),
         $dummy['styles'][ array_rand($dummy['styles']) ]
       ], " "),
-      'brewery' => $dummy['breweries'][ array_rand($dummy['breweries']) ]
+      'brewery' => $dummy['breweries'][ array_rand($dummy['breweries']) ],
+      'sampled' => $faker->date('Y-m-d', 'now'),
+      'abv' => $faker->randomFloat(2, 3, 18),
+      'rating' => $faker->numberBetween(1, 5),
+      'notes' => $faker->paragraph(3, true)
     ];
 });

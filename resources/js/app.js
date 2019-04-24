@@ -12,8 +12,11 @@ window.flash = function(message) {
     window.events.$emit('flash',message);
 }
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+
+import VueRouter from 'vue-router';
+import Datepicker from 'vuejs-datepicker'
+import StarRating from 'vue-star-rating'
 
 Vue.use(VueRouter);
 
@@ -21,6 +24,9 @@ import App from './components/App'
 import List from './components/List'
 import New from './components/New'
 import Edit from './components/Edit'
+
+Vue.component('star-rating', StarRating);
+Vue.component('datepicker', Datepicker);
 
 const router = new VueRouter({
     mode: 'history',
@@ -36,7 +42,7 @@ const router = new VueRouter({
             component: New,
         },
         {
-            path: '/beer/:id',
+            path: '/beers/:id',
             name: 'edit',
             component: Edit,
         },

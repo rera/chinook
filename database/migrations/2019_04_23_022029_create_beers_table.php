@@ -17,6 +17,10 @@ class CreateBeersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('brewery');
+            $table->date('sampled');
+            $table->double('abv', 8, 2);
+            $table->enum('rating', [1, 2, 3, 4, 5]);
+            $table->longText('notes');
             $table->timestamps();
         });
     }
