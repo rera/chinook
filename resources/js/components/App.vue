@@ -10,7 +10,7 @@
     	  <div class="collapse navbar-collapse" id="navbar">
     	    <ul class="navbar-nav mr-auto">
     	      <li class="nav-item active">
-              <router-link :to="{ name: 'list' }" class="nav-link">Beer List</router-link>
+              <router-link :to="{ name: 'list' }" class="nav-link">Beer Journal</router-link>
     	      </li>
     	      <li class="nav-item">
               <router-link :to="{ name: 'new' }" class="nav-link">New Entry</router-link>

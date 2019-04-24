@@ -2049,11 +2049,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: '',
-      brewery: ''
+      brewery: '',
+      sampled: '',
+      abv: '',
+      rating: '',
+      notes: ''
     };
   },
   methods: {
@@ -2065,6 +2099,16 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$router.push('/');
       });
+    }
+  },
+  computed: {
+    numberRating: {
+      get: function get() {
+        return Number(this.rating);
+      },
+      set: function set(value) {
+        this.rating = value;
+      }
     }
   }
 });
@@ -38040,7 +38084,7 @@ var render = function() {
                           staticClass: "nav-link",
                           attrs: { to: { name: "list" } }
                         },
-                        [_vm._v("Beer List")]
+                        [_vm._v("Beer Journal")]
                       )
                     ],
                     1
@@ -38532,6 +38576,111 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "col-md-4" }, [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [_vm._v("Sampled")]),
+              _vm._v(" "),
+              _c("datepicker", {
+                staticClass: "form-control form-control-lg",
+                attrs: { name: "uniquename" },
+                model: {
+                  value: _vm.sampled,
+                  callback: function($$v) {
+                    _vm.sampled = $$v
+                  },
+                  expression: "sampled"
+                }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2" }, [
+          _c("label", [_vm._v("ABV")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.abv,
+                  expression: "abv"
+                }
+              ],
+              staticClass: "form-control form-control-lg",
+              attrs: { type: "text" },
+              domProps: { value: _vm.abv },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.abv = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c(
+            "div",
+            { staticClass: "form-group ml-1" },
+            [
+              _c("label", [_vm._v("Rating")]),
+              _vm._v(" "),
+              _c("star-rating", {
+                attrs: { "star-size": 40 },
+                model: {
+                  value: _vm.numberRating,
+                  callback: function($$v) {
+                    _vm.numberRating = $$v
+                  },
+                  expression: "numberRating"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("label", { attrs: { for: "notes" } }, [_vm._v("Notes")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.notes,
+                expression: "notes"
+              }
+            ],
+            staticClass: "form-control form-control-lg",
+            attrs: { id: "notes", rows: "5" },
+            domProps: { value: _vm.notes },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.notes = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "router-link",
         { staticClass: "btn btn-link", attrs: { to: "/", tag: "button" } },
@@ -38545,7 +38694,16 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("%")])
+    ])
+  }
+]
 render._withStripped = true
 
 
