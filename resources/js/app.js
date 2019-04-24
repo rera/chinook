@@ -4,11 +4,11 @@ window.Vue = require('vue');
 
 window.flash = function(message) {
   window.events.$emit('flash',message);
-}
+};
 
-import Vue from 'vue'
+import Vue from 'vue';
 
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import DatePicker from 'vuejs-datepicker'
@@ -23,10 +23,10 @@ Vue.component('beer-card', BeerCard);
 import BeerForm from './components/Form.vue';
 Vue.component('beer-form', BeerForm);
 
-import App from './views/App'
-import List from './views/List'
-import New from './views/New'
-import Edit from './views/Edit'
+import App from './views/App';
+import List from './views/List';
+import New from './views/New';
+import Edit from './views/Edit';
 
 const router = new VueRouter({
   mode: 'history',
