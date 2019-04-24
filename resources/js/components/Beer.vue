@@ -21,7 +21,7 @@
     props: ['beer'],
     methods: {
       del() {
-        this.$emit('delete', this.id);
+        this.$emit('delete', this.beer.id);
       }
     },
     filters: {

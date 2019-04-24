@@ -1785,7 +1785,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['beer'],
   methods: {
     del: function del() {
-      this.$emit('delete', this.id);
+      this.$emit('delete', this.beer.id);
     }
   },
   filters: {

@@ -34,7 +34,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'list',
-      component: List
+      component: List,
     },
     {
       path: '/new',
