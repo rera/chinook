@@ -1,11 +1,11 @@
 <template>
 	<div class="card-columns">
-		<beer-component
+		<beer-card
 			v-for="beer in beers"
-			v-bind="beer"
-			:key="beer.id"
+			v-bind:key="beer.id"
+			v-bind:beer="beer"
 			@delete="del"
-		></beer-component>
+		></beer-card>
 	</div>
 </template>
 
@@ -19,8 +19,6 @@
     this.rating = rating;
     this.notes = notes;
   }
-
-  import BeerComponent from './Beer.vue';
 
   export default {
     data() {
@@ -42,9 +40,6 @@
           this.beers.splice(index, 1);
         });
       }
-    },
-    components: {
-      BeerComponent
     },
 		created() {
 		  this.fetch();

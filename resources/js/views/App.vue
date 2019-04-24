@@ -6,7 +6,6 @@
     	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     	    <span class="navbar-toggler-icon"></span>
     	  </button>
-
     	  <div class="collapse navbar-collapse" id="navbar">
     	    <ul class="navbar-nav mr-auto">
     	      <li class="nav-item active">
@@ -24,13 +23,13 @@
     	</div>
     </nav>
     <main role="main" class="container">
-        <router-view></router-view>
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <style lang="scss">
-@import '/css/app.css';
+  @import '/css/app.css';
 </style>
 
 <script>

@@ -16,30 +16,30 @@ class BeersController extends Controller
 
 	public function store(Request $request)
 	{
-			$beer = new Beer();
-			$beer->name = $request->name;
-			$beer->brewery = $request->brewery;
-			$beer->sampled = $request->sampled;
-			$beer->abv = $request->abv;
-			$beer->rating = $request->rating;
-			$beer->notes = $request->notes;
-		  $beer->save();
-
-		  return response($beer->jsonSerialize(), Response::HTTP_CREATED);
-	}
-
-	public function update(Request $request, $id)
-	{
-	  $beer = Beer::findOrFail($id);
+		$beer = new Beer();
 		$beer->name = $request->name;
 		$beer->brewery = $request->brewery;
 		$beer->sampled = $request->sampled;
 		$beer->abv = $request->abv;
 		$beer->rating = $request->rating;
 		$beer->notes = $request->notes;
-	  $beer->save();
+		$beer->save();
 
-	  return response(null, Response::HTTP_OK);
+		return response($beer->jsonSerialize(), Response::HTTP_CREATED);
+	}
+
+	public function update(Request $request, $id)
+	{
+		$beer = Beer::findOrFail($id);
+		$beer->name = $request->name;
+		$beer->brewery = $request->brewery;
+		$beer->sampled = $request->sampled;
+		$beer->abv = $request->abv;
+		$beer->rating = $request->rating;
+		$beer->notes = $request->notes;
+		$beer->save();
+
+		return response(null, Response::HTTP_OK);
 	}
 
 	public function edit(Request $request, $id)

@@ -38,6 +38,10 @@ body {
     .vdp-datepicker input[type='text'] {
       border: 0;
       color: #495057;
+      width: 100%;
+    }
+    .vdp-datepicker input[type='text']:focus {
+      outline: none;
     }
 
   }

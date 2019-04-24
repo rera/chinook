@@ -10707,5 +10707,10 @@ body #app .card-columns .stars {
 body #app .vdp-datepicker input[type=text] {
   border: 0;
   color: #495057;
+  width: 100%;
+}
+
+body #app .vdp-datepicker input[type=text]:focus {
+  outline: none;
 }
 
