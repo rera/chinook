@@ -1,8 +1,7 @@
 <template>
   <form @submit.prevent="update" class="container">
     <beer-form v-bind:beer="beer"></beer-form>
-
-    <router-link to="/" tag="button" class="btn btn-link">&larr; Back to the beers</router-link>
+    <a href="javascript:void(null)" @click="$router.go(-1)">&larr; Back to the beers</a>
     <button class="btn btn-primary float-right">Save &amp; Exit</button>
   </form>
 </template>
@@ -22,7 +21,7 @@
     methods: {
       update() {
         window.axios.put(`/api/beers/${this.$route.params.id}`, this.beer).then(() => {
-          this.$router.push('/');
+          this.$router.go(-1);
         });
       }
     }

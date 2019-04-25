@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Beer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 use Faker\Generator;
 
 class BeersController extends Controller
 {
-	public function index()
-	{
-		return response(Beer::orderBy('sampled', 'desc')->get(), Response::HTTP_OK);
+	public function index(Request $request)
+  {
+    $params = $request->except('_token');
+    $beers = Beer::filter($params)->get();
+		return response($beers, Response::HTTP_OK);
 	}
 
 	public function store(Request $request)

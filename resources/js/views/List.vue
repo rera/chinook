@@ -10,17 +10,8 @@
 </template>
 
 <script>
-  function Beer({ id, name, brewery, sampled, abv, rating, notes }) {
-    this.id = id;
-    this.name = name;
-    this.brewery = brewery;
-    this.sampled = sampled;
-    this.abv = abv;
-    this.rating = rating;
-    this.notes = notes;
-  }
-
   export default {
+		props: ['query'],
     data() {
       return {
         beers: []
@@ -28,11 +19,9 @@
     },
     methods: {
       fetch() {
-        window.axios.get('/api/beers').then(({ data }) => {
-					data.forEach(beer => {
-						this.beers.push(new Beer(beer));
-					})
-				});
+        window.axios.get('/api/beers', { params: { search: this.query } } )
+					.then(response => this.beers = response.data)
+					.catch(error => {});
       },
       del(id) {
         window.axios.delete(`/api/beers/${id}`).then(() => {

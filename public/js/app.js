@@ -1913,7 +1913,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      term: ''
+    };
+  },
+  methods: {
+    search: function search() {
+      this.$router.push(this.term ? '?search=' + this.term : '/');
+    },
+    home: function home() {
+      this.term = '';
+      this.$router.push('/');
+    }
+  }
+});
 
 /***/ }),
 
@@ -1926,7 +1941,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -1953,7 +1967,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       window.axios.put("/api/beers/".concat(this.$route.params.id), this.beer).then(function () {
-        _this2.$router.push('/');
+        _this2.$router.go(-1);
       });
     }
   }
@@ -1981,24 +1995,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-function Beer(_ref) {
-  var id = _ref.id,
-      name = _ref.name,
-      brewery = _ref.brewery,
-      sampled = _ref.sampled,
-      abv = _ref.abv,
-      rating = _ref.rating,
-      notes = _ref.notes;
-  this.id = id;
-  this.name = name;
-  this.brewery = brewery;
-  this.sampled = sampled;
-  this.abv = abv;
-  this.rating = rating;
-  this.notes = notes;
-}
-
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['query'],
   data: function data() {
     return {
       beers: []
@@ -2008,12 +2006,13 @@ function Beer(_ref) {
     fetch: function fetch() {
       var _this = this;
 
-      window.axios.get('/api/beers').then(function (_ref2) {
-        var data = _ref2.data;
-        data.forEach(function (beer) {
-          _this.beers.push(new Beer(beer));
-        });
-      });
+      window.axios.get('/api/beers', {
+        params: {
+          search: this.query
+        }
+      }).then(function (response) {
+        return _this.beers = response.data;
+      })["catch"](function (error) {});
     },
     del: function del(id) {
       var _this2 = this;
@@ -2051,7 +2050,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2071,6 +2069,7 @@ __webpack_require__.r(__webpack_exports__);
 
       window.axios.post("/api/beers", this.beer).then(function (_ref) {
         var data = _ref.data;
+        _this.term = '';
 
         _this.$router.push('/');
       });
@@ -38285,72 +38284,127 @@ var render = function() {
       "nav",
       { staticClass: "navbar navbar-expand-md navbar-dark bg-dark fixed-top" },
       [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "navbar-brand", attrs: { to: { name: "list" } } },
-              [_vm._v("Chinook")]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbar" }
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "a",
+            {
+              staticClass: "navbar-brand",
+              attrs: { href: "javascript:void(null)" },
+              on: {
+                click: function($event) {
+                  return _vm.home()
+                }
+              }
+            },
+            [_vm._v("Chinook")]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbar" }
+            },
+            [
+              _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+                _c("li", { staticClass: "nav-item active" }, [
                   _c(
-                    "li",
-                    { staticClass: "nav-item active" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { to: { name: "list" } }
-                        },
-                        [_vm._v("Beer Journal")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { to: { name: "new" } }
-                        },
-                        [_vm._v("New Entry")]
-                      )
-                    ],
-                    1
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { href: "javascript:void(null)" },
+                      on: {
+                        click: function($event) {
+                          return _vm.home()
+                        }
+                      }
+                    },
+                    [_vm._v("Beer Journal")]
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
-              ]
-            )
-          ],
-          1
-        )
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "new" } }
+                      },
+                      [_vm._v("New Entry")]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "form-inline my-2 my-lg-0",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.search($event)
+                    }
+                  }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.term,
+                        expression: "term"
+                      }
+                    ],
+                    staticClass: "form-control mr-sm-2",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Search",
+                      "aria-label": "Search"
+                    },
+                    domProps: { value: _vm.term },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.term = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary my-2 my-sm-0",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Search")]
+                  )
+                ]
+              )
+            ]
+          )
+        ])
       ]
     ),
     _vm._v(" "),
     _c(
       "main",
       { staticClass: "container", attrs: { role: "main" } },
-      [_c("router-view")],
+      [
+        _c("router-view", {
+          key: _vm.$route.fullPath,
+          attrs: { query: this.term }
+        })
+      ],
       1
     )
   ])
@@ -38375,26 +38429,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-      _c("input", {
-        staticClass: "form-control mr-sm-2",
-        attrs: { type: "text", placeholder: "Search", "aria-label": "Search" }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary my-2 my-sm-0",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Search")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -38433,8 +38467,15 @@ var render = function() {
       _c("beer-form", { attrs: { beer: _vm.beer } }),
       _vm._v(" "),
       _c(
-        "router-link",
-        { staticClass: "btn btn-link", attrs: { to: "/", tag: "button" } },
+        "a",
+        {
+          attrs: { href: "javascript:void(null)" },
+          on: {
+            click: function($event) {
+              return _vm.$router.go(-1)
+            }
+          }
+        },
         [_vm._v("← Back to the beers")]
       ),
       _vm._v(" "),
@@ -38517,8 +38558,15 @@ var render = function() {
       _c("beer-form", { attrs: { beer: _vm.beer } }),
       _vm._v(" "),
       _c(
-        "router-link",
-        { staticClass: "btn btn-link", attrs: { to: "/", tag: "button" } },
+        "a",
+        {
+          attrs: { href: "javascript:void(null)" },
+          on: {
+            click: function($event) {
+              return _vm.$router.go(-1)
+            }
+          }
+        },
         [_vm._v("← Cancel New Beer")]
       ),
       _vm._v(" "),

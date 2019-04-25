@@ -1,8 +1,7 @@
 <template>
   <form @submit.prevent="create" class="container">
     <beer-form v-bind:beer="beer"></beer-form>
-
-    <router-link to="/" tag="button" class="btn btn-link">&larr; Cancel New Beer</router-link>
+    <a href="javascript:void(null)" @click="$router.go(-1)">&larr; Cancel New Beer</a>
     <button class="btn btn-primary float-right">Save &amp; Exit</button>
   </form>
 </template>
@@ -24,7 +23,8 @@
     methods: {
       create() {
 				window.axios.post(`/api/beers`, this.beer).then(({ data }) => {
-					this.$router.push('/');
+          this.term = '';
+          this.$router.push('/');
 				});
       }
     },
