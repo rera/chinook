@@ -1,8 +1,11 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,500,600,700');
 
 // Variables
 @import 'variables';
+
+// Custom
+@import 'chinook';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -12,6 +15,28 @@ body {
 
   #app {
     padding: .5rem;
+
+    a.navbar-brand {
+      text-transform: uppercase;
+      letter-spacing: +2px;
+      color: $chinook-yellow;
+      font-size: 1.4rem;
+      &:before {
+        content: '';
+        display: inline-block;
+        background: url('/../images/chinook-logo.png') no-repeat top left;
+        background-size: 100% auto;
+        margin: 0 8px -8px 0;
+        height: 28px;
+        width: 20px;
+      }
+    }
+
+    form#search input[type="text"] {
+      background: $chinook-slate;
+      border-color: $chinook-slate;
+      color: $chinook-marble;
+    }
 
     .card-columns {
       @include media-breakpoint-only(sm) {
@@ -23,22 +48,28 @@ body {
       @include media-breakpoint-only(lg) {
         column-count: 3;
       }
-
       .card-title {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        a {
+          color: $chinook-slate;
+        }
       }
-
       .stars {
         margin-left: 10px;
+        color: $chinook-yellow;
+      }
+      .close {
+        text-shadow: none;
       }
     }
 
     .vdp-datepicker input[type='text'] {
       border: 0;
-      color: #495057;
+      color: $chinook-charcoal;
       width: 100%;
+      background-color: transparent;
     }
     .vdp-datepicker input[type='text']:focus {
       outline: none;

@@ -1,0 +1,38 @@
+// Body
+// $body-bg: #6c757d;
+
+// Typography
+$font-family-sans-serif: 'Raleway', sans-serif;
+
+// Colors
+$yellow: #fcba41;
+$theme-colors: (
+  "primary": #fcba41
+);
+$chinook-yellow: #fcba41;
+$chinook-marble: #f7f9fc;
+$chinook-stone: #eaecef;
+$chinook-charcoal: #40474d;
+$chinook-granite: #2e3338;
+$chinook-slate: #292d31;
+$secondary: $chinook-charcoal;
+
+// Settings
+$enable-rounded: false;
+
+// Forms
+$input-bg: $chinook-stone;
+$input-border-color: $chinook-stone;
+$input-group-addon-bg: $chinook-stone;
+$input-group-addon-border-color: $chinook-stone;
+$input-color: $chinook-charcoal;
+
+// Cards
+$card-bg: $chinook-stone;
+$card-border-color: transparent;
+$card-border-width: 0;
+$card-color: $chinook-charcoal;
+
+// Links
+$link-color: $chinook-charcoal;
+$link-hover-color: $chinook-granite;

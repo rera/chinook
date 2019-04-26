@@ -7,7 +7,7 @@
       <h5 class="card-title">
         <router-link :to="`/beers/${beer.id}`">{{ beer.name }}</router-link>
       </h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ beer.brewery }}</h6>
+      <h6 class="card-subtitle mb-2">{{ beer.brewery }}</h6>
       <p class="card-text">
         {{ beer.abv }}% ABV
         <span class="stars" v-html="$options.filters.ratingStars(beer.rating)"></span>

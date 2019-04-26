@@ -33,7 +33,7 @@
 			<div class="col-md-6">
 				<div class="form-group ml-1">
 					<label>Rating</label>
-					<star-rating v-model="numberRating" v-bind:star-size="40"></star-rating>
+					<star-rating v-model="numberRating" v-bind:star-size="40" active-color="#fcba41"></star-rating>
 				</div>
 			</div>
 		</div>

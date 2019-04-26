@@ -15,7 +15,7 @@
               <router-link :to="{ name: 'new' }" class="nav-link">New Entry</router-link>
     	      </li>
     	    </ul>
-    	    <form class="form-inline my-2 my-lg-0" @submit.prevent="search">
+    	    <form class="form-inline my-2 my-lg-0" id="search" @submit.prevent="search">
     	      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" v-model="term">
     	      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	    </form>

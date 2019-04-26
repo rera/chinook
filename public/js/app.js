@@ -38046,7 +38046,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+      _c("h6", { staticClass: "card-subtitle mb-2" }, [
         _vm._v(_vm._s(_vm.beer.brewery))
       ]),
       _vm._v(" "),
@@ -38204,7 +38204,7 @@ var render = function() {
             _c("label", [_vm._v("Rating")]),
             _vm._v(" "),
             _c("star-rating", {
-              attrs: { "star-size": 40 },
+              attrs: { "star-size": 40, "active-color": "#fcba41" },
               model: {
                 value: _vm.numberRating,
                 callback: function($$v) {
@@ -38346,6 +38346,7 @@ var render = function() {
                 "form",
                 {
                   staticClass: "form-inline my-2 my-lg-0",
+                  attrs: { id: "search" },
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
