@@ -41,7 +41,7 @@
     },
     methods: {
       search() {
-        this.$router.push( this.term ? '?search='+this.term : '/');
+        this.$router.push( this.term ? '/?search='+this.term : '/');
       },
       home() {
         this.term = '';

@@ -1921,7 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     search: function search() {
-      this.$router.push(this.term ? '?search=' + this.term : '/');
+      this.$router.push(this.term ? '/?search=' + this.term : '/');
     },
     home: function home() {
       this.term = '';
