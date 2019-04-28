@@ -11,6 +11,6 @@ class BeersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Beer::class, 15)->create();
+        factory(App\Beer::class, 24)->create();
     }
 }

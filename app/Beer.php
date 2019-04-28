@@ -15,6 +15,7 @@ class Beer extends Model
       	$q->orWhere('brewery', 'ilike', "%$search%");
       });
     }
+    // @TODO: sortby sampled desc
     return $query;
   }
 }

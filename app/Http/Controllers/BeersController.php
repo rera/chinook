@@ -13,7 +13,7 @@ class BeersController extends Controller
 	public function index(Request $request)
   {
     $params = $request->except('_token');
-    $beers = Beer::filter($params)->get();
+    $beers = Beer::filter($params)->orderBy('sampled', 'DESC')->get();
 		return response($beers, Response::HTTP_OK);
 	}
 
@@ -54,7 +54,6 @@ class BeersController extends Controller
 	public function destroy($id)
 	{
 	  Beer::destroy($id);
-
 	  return response(null, Response::HTTP_OK);
 	}
 }
