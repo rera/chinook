@@ -10402,6 +10402,7 @@ a.text-dark:focus {
 
 body {
   padding-top: 5rem;
+  padding-bottom: 2rem;
 }
 
 body #app {
