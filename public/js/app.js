@@ -1919,6 +1919,11 @@ __webpack_require__.r(__webpack_exports__);
       term: ''
     };
   },
+  watch: {
+    '$route.fullPath': function $routeFullPath() {
+      $('#navbar').collapse('hide');
+    }
+  },
   methods: {
     search: function search() {
       this.$router.push(this.term ? '/?search=' + this.term : '/');

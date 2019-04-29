@@ -40,13 +40,13 @@
       }
     },
     watch: {
-      '$route' () {
-        $('#navbar-collapse').collapse('hide');
+      '$route.fullPath' () {
+        $('#navbar').collapse('hide');
       }
-    }
+    },
     methods: {
       search() {
-        this.$router.push( this.term ? '/?search='+this.term : '/');
+        this.$router.push(this.term ? '/?search='+this.term : '/');
       },
       home() {
         this.term = '';
