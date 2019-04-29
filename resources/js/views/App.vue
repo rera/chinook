@@ -39,6 +39,11 @@
         term: ''
       }
     },
+    watch: {
+      '$route' () {
+        $('#navbar-collapse').collapse('hide');
+      }
+    }
     methods: {
       search() {
         this.$router.push( this.term ? '/?search='+this.term : '/');
